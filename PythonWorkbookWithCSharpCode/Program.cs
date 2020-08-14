@@ -120,5 +120,63 @@ namespace PythonWorkbookInCSharp
         }
 
         //##################### END OF EXERCISE 69 APPROXIMATE PAI ###################################
+
+        //##################### START OF EXERCISE 72 STRING PALINDROME ################################
+        public void StringPalindrome(string input)
+        {
+            bool output = true;
+
+            int start = 0;
+            int end = input.Length - 1;
+            while (start < end)
+            {
+                if (input[start] != input[end])
+                {
+                    output = false;
+                    break;
+                }
+                start++;
+                end--;
+            }
+
+            Console.WriteLine($"It is {output} that {input} is a palindrome.");
+        }
+
+        //##################### END OF EXERCISE 72 STRING PALINDROME ###################################
+
+        //##################### START OF EXERCISE 93 NEXT PRIME ################################
+        public int NextPrime(int input)
+        {
+            int output = input;
+            while (IsPrime(output) != true)
+            {
+                output++;
+            }
+
+            return output;
+        }
+
+        public bool IsPrime(int input)
+        {
+            bool output = true;
+            
+            if (input <=1)
+            {
+                output = false;
+            }           
+
+            for (int i = 2; i < input; i++)
+            {
+                if (input % i == 0)
+                {
+                    output = false;
+                    break;
+                }
+            }
+
+            return output;
+        }
+
+        //##################### END OF EXERCISE NEXT PRIME ###################################
     }
 }
