@@ -177,6 +177,6 @@ namespace PythonWorkbookInCSharp
             return output;
         }
 
-        //##################### END OF EXERCISE NEXT PRIME ###################################
+        //##################### END OF EXERCISE 93 NEXT PRIME ###################################
     }
 }
