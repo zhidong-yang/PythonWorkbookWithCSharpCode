@@ -9,11 +9,13 @@ namespace PythonWorkbookInCSharp
     class Program
     {
         static void Main(string[] args)
-        {
+        {            
+
+            Console.ReadLine();
         }
 
         //##################### START OF EXERCISE 11 FUEL EFFICIENCY ################################
-        public void MPGToLPH(double mpg)
+        public static void MPGToLPH(double mpg)
         {
             // 1 mile = 1.6km
             // 1 gallon = 3.79 liters
@@ -26,7 +28,7 @@ namespace PythonWorkbookInCSharp
 
 
         //##################### START OF EXERCISE 48 CHINESE ZODIAC ################################
-        public void ChineseZodiac(int year)
+        public static void ChineseZodiac(int year)
         {
             //2000 % 12 = 8, which makes year 0 Year Monkey.
             int yearResidual = year % 12;
@@ -99,7 +101,7 @@ namespace PythonWorkbookInCSharp
         //##################### END OF EXERCISE 48 CHINESE ZODIAC ###################################
 
         //##################### START OF EXERCISE 69 APPROXIMATE PAI ################################
-        public void ApproxPai(int num)
+        public static void ApproxPai(int num)
         {
             // num is how many approximation of pai desired. In original question it requires to display all 15
             // Here I display only one based on input
@@ -121,8 +123,48 @@ namespace PythonWorkbookInCSharp
 
         //##################### END OF EXERCISE 69 APPROXIMATE PAI ###################################
 
+
+        //##################### START OF EXERCISE 64 NO MORE PENNIES ################################
+        public static void PennyLessPay()
+        {
+            
+            double sum = 0.00;
+            Console.Write("What is the price (press Enter to finish): ");
+            string userInput = Console.ReadLine();
+
+            while (!String.IsNullOrEmpty(userInput))
+            {
+                // assumption: the user enters non-negative number
+                double priceReading = Math.Round(Convert.ToDouble(userInput),2,MidpointRounding.AwayFromZero);
+                sum += priceReading;
+
+                Console.Write("What is the price (press Enter to finish): ");
+                userInput = Console.ReadLine();
+            }
+
+            double pennylessTotal = sum;
+            if ((sum*100) % 5 != 0)
+            {
+                if ((sum * 100) % 5 > 2) // round up for total price more than 0.05 precision
+                {
+                    pennylessTotal = ((pennylessTotal * 100) + (5 - (sum * 100) % 5)) / 100;  
+                }
+                else // round down for price less than 0.05 precision
+                {
+                    pennylessTotal = ((pennylessTotal * 100) - ((sum * 100) % 5)) / 100;
+                }
+            }
+
+            Console.WriteLine($"The total price is {sum}");
+            Console.WriteLine($"The actual pennyless balance is {pennylessTotal}");
+        }
+
+        //##################### END OF EXERCISE 64 NO MORE PENNIES ###################################
+
+
+
         //##################### START OF EXERCISE 72 STRING PALINDROME ################################
-        public void StringPalindrome(string input)
+        public static void StringPalindrome(string input)
         {
             bool output = true;
 
@@ -145,7 +187,7 @@ namespace PythonWorkbookInCSharp
         //##################### END OF EXERCISE 72 STRING PALINDROME ###################################
 
         //##################### START OF EXERCISE 93 NEXT PRIME ################################
-        public int NextPrime(int input)
+        public static int NextPrime(int input)
         {
             int output = input;
             while (IsPrime(output) != true)
@@ -156,7 +198,7 @@ namespace PythonWorkbookInCSharp
             return output;
         }
 
-        public bool IsPrime(int input)
+        public static bool IsPrime(int input)
         {
             bool output = true;
             
