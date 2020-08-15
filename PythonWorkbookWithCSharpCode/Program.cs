@@ -100,29 +100,6 @@ namespace PythonWorkbookInCSharp
 
         //##################### END OF EXERCISE 48 CHINESE ZODIAC ###################################
 
-        //##################### START OF EXERCISE 69 APPROXIMATE PAI ################################
-        public static void ApproxPai(int num)
-        {
-            // num is how many approximation of pai desired. In original question it requires to display all 15
-            // Here I display only one based on input
-            double outupt = 3.0;
-            for (int i = 1; i < num; i++)
-            {
-                if (i % 2 != 0)
-                {
-                    outupt += (4 / ((2 * i) * (2 * (i + 1)) * (2 * (i + 2))));
-                }
-                else
-                {
-                    outupt -= (4 / ((2 * i) * (2 * (i + 1)) * (2 * (i + 2))));
-                }
-            }
-
-            Console.WriteLine($"The {num}th approximation of Pai is {outupt}.");
-        }
-
-        //##################### END OF EXERCISE 69 APPROXIMATE PAI ###################################
-
 
         //##################### START OF EXERCISE 64 NO MORE PENNIES ################################
         public static void PennyLessPay()
@@ -161,6 +138,29 @@ namespace PythonWorkbookInCSharp
 
         //##################### END OF EXERCISE 64 NO MORE PENNIES ###################################
 
+
+        //##################### START OF EXERCISE 69 APPROXIMATE PAI ################################
+        public static void ApproxPai(int num)
+        {
+            // num is how many approximation of pai desired. In original question it requires to display all 15
+            // Here I display only one based on input
+            double outupt = 3.0;
+            for (int i = 1; i < num; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    outupt += (4 / ((2 * i) * (2 * (i + 1)) * (2 * (i + 2))));
+                }
+                else
+                {
+                    outupt -= (4 / ((2 * i) * (2 * (i + 1)) * (2 * (i + 2))));
+                }
+            }
+
+            Console.WriteLine($"The {num}th approximation of Pai is {outupt}.");
+        }
+
+        //##################### END OF EXERCISE 69 APPROXIMATE PAI ###################################
 
 
         //##################### START OF EXERCISE 72 STRING PALINDROME ################################
