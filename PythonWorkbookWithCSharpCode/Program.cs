@@ -186,6 +186,49 @@ namespace PythonWorkbookInCSharp
 
         //##################### END OF EXERCISE 72 STRING PALINDROME ###################################
 
+
+        //##################### START OF EXERCISE 90 STRING INTEGER? ################################
+        public static bool IsInteger(string input)
+        {
+            // This function does not fulfill the second paragraph part of the question -- input is a given
+            
+            bool output = true;
+            // remove all the leading and trailing spaces from the input
+            input = input.Trim();
+            // not integer if the string is empty
+            if (String.IsNullOrEmpty(input))
+            {
+                output = false;
+            }
+            // case 1: only has one char which is not a number
+            if (input.Length == 1 && !Char.IsDigit(input[0]))
+            {
+                output = false;
+            }
+            // case 2: string has more than one char: not integer if the first char is not '+', '-' or digit
+            else if (input[0] != '+' && input[0] != '-' && char.IsDigit(input[0]))
+            {
+                output = false;
+            }
+            // case 3: string has more than one char
+            // looping from second char to the end -- should all be digits
+            else
+            {
+                for (int i = 1; i < input.Length; i++)
+                {
+                    if (!char.IsDigit(input[i]))
+                    {
+                        output = false;
+                        break;
+                    }
+                }
+            }
+
+            return output;
+        }
+
+        //##################### END OF EXERCISE 90 STRING INTEGER? ###################################
+
         //##################### START OF EXERCISE 93 NEXT PRIME ################################
         public static int NextPrime(int input)
         {
