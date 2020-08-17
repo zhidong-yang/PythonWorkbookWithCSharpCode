@@ -9,8 +9,8 @@ namespace PythonWorkbookInCSharp
     class Program
     {
         static void Main(string[] args)
-        {            
-
+        {
+            
             Console.ReadLine();
         }
 
@@ -161,6 +161,38 @@ namespace PythonWorkbookInCSharp
         }
 
         //##################### END OF EXERCISE 69 APPROXIMATE PAI ###################################
+
+
+        //##################### START OF EXERCISE 70 CAESAR CYPHER ################################
+        public static string CaesarCypher(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+            
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (Char.IsLetter(input[i]))
+                {
+                    int charNum = (int)input[i];
+                    // X = 88 --> A = 65; x = 120 --> a = 97
+                    if ((charNum > 87 && charNum < 91) || (charNum > 129 && charNum < 123))
+                    {
+                        input = input.Replace(input[i], (char)(charNum - 23));
+                    }
+                    else
+                    {
+                        input = input.Replace(input[i], (char)(charNum + 3));
+                    }
+                }                
+            }
+
+            return input;
+        }
+
+        //##################### END OF EXERCISE 70 CAESAR CYPHER ###################################
+
 
 
         //##################### START OF EXERCISE 72 STRING PALINDROME ################################
