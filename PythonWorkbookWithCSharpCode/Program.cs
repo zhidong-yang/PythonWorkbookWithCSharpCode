@@ -9,8 +9,7 @@ namespace PythonWorkbookInCSharp
     class Program
     {
         static void Main(string[] args)
-        {
-            
+        {           
             Console.ReadLine();
         }
 
@@ -295,5 +294,67 @@ namespace PythonWorkbookInCSharp
         }
 
         //##################### END OF EXERCISE 93 NEXT PRIME ###################################
+
+
+        //##################### START OF EXERCISE 131 MORSE CODE ################################
+        public static string MorseCode(string input)
+        {
+            // Build the morse code library
+            Dictionary<char, string> morseCode = new Dictionary<char, string>();
+            morseCode['A'] = ".-";
+            morseCode['B'] = "-...";
+            morseCode['C'] = "-.-.";
+            morseCode['D'] = "-..";
+            morseCode['E'] = ".";
+            morseCode['F'] = "..-.";
+            morseCode['G'] = "--.";
+            morseCode['H'] = "....";
+            morseCode['I'] = "..";
+            morseCode['J'] = ".---";
+            morseCode['K'] = "-.-";
+            morseCode['L'] = ".-..";
+            morseCode['M'] = "--";
+            morseCode['N'] = "-.";
+            morseCode['O'] = "---";
+            morseCode['P'] = ".--.";
+            morseCode['Q'] = "--.-";
+            morseCode['R'] = ".-.";
+            morseCode['S'] = "...";
+            morseCode['T'] = "-";
+            morseCode['U'] = "..-";
+            morseCode['V'] = "...-";
+            morseCode['W'] = ".--";
+            morseCode['X'] = "-..-";
+            morseCode['Y'] = "-.--";
+            morseCode['Z'] = "--..";
+            morseCode['0'] = "-----";
+            morseCode['1'] = ".----";
+            morseCode['2'] = "..---";
+            morseCode['3'] = "...--";
+            morseCode['4'] = "....-";
+            morseCode['5'] = ".....";
+            morseCode['6'] = "-....";
+            morseCode['7'] = "--...";
+            morseCode['8'] = "---..";
+            morseCode['9'] = "----.";
+
+            // building the new string for output
+            StringBuilder codedWord = new StringBuilder();
+            input = input.ToUpper();
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (Char.IsLetterOrDigit(input[i]))
+                {
+                    codedWord.Append(morseCode[input[i]]);
+                    codedWord.Append(" ");
+                }
+            }
+
+            string output = codedWord.ToString();
+
+            return output;
+        }
+
+        //##################### END OF EXERCISE 131 MORSE CODE ##################################
     }
 }
