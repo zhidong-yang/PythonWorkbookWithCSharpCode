@@ -9,9 +9,7 @@ namespace PythonWorkbookInCSharp
     class Program
     {
         static void Main(string[] args)
-        {
-            Capitalize("'i wanna be i");
-            
+        {            
             Console.ReadLine();
         }
 
