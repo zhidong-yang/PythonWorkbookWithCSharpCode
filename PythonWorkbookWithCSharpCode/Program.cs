@@ -9,7 +9,7 @@ namespace PythonWorkbookInCSharp
     class Program
     {
         static void Main(string[] args)
-        {           
+        {            
             Console.ReadLine();
         }
 
@@ -216,6 +216,68 @@ namespace PythonWorkbookInCSharp
         }
 
         //##################### END OF EXERCISE 72 STRING PALINDROME ###################################
+
+
+        //##################### START OF EXERCISE 89 CAPITALIZE IT ################################
+        public static void Capitalize(string message)
+        {
+            // Assuming this is only English language so we don't need to consider other punctuation in languages such as Spanish
+            // Also not including proper noun's capitalization
+            // capitalize the first letter in the message
+            // capitalize the first letter after certain punctuation
+            StringBuilder result = new StringBuilder();
+            
+            char[] endingPunctuation = { '.', '!', '?' };
+            bool flag = true;
+
+            for (int i = 0; i < message.Length; i++)
+            {
+                // capitalize the letter "I"
+                if (i > 0 && i < (message.Length - 1) && message[i] == 'i')
+                {
+                    if ((endingPunctuation.Contains(message[i - 1]) || message[i-1] == ' ')
+                        && (message[i+1] == ' ') || (endingPunctuation.Contains(message[i + 1])))
+                    {
+                        flag = true;
+                    }                    
+                }
+                else if (message[i] == 'i' && (i == message.Length-1)) // if 'i' appears as the last char of the message
+                {
+                    flag = true;
+                }
+
+                if (endingPunctuation.Contains(message[i]))
+                {
+                    flag = true;
+                }
+
+                if (Char.IsLetter(message[i]) && flag)
+                {
+                    // check the letter is lower case based on ASCII
+                    if ((int)message[i] >= 97)
+                    {
+                        char capitalizedChar = (char)((int)message[i] - 32);
+                        result.Append(capitalizedChar);
+                    }
+                    else
+                    {
+                        result.Append(message[i]);
+                    }
+
+                    flag = false;
+                }
+                else
+                {
+                    result.Append(message[i]);
+                }
+            }
+
+            string output = result.ToString();
+
+            Console.WriteLine($"After correct capitalization, the message becomes: {output}");
+        }
+
+        //##################### END OF EXERCISE 89 CAPITALIZE IT ###################################
 
 
         //##################### START OF EXERCISE 90 STRING INTEGER? ################################
