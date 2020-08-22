@@ -358,6 +358,75 @@ namespace PythonWorkbookInCSharp
         //##################### END OF EXERCISE 93 NEXT PRIME ###################################
 
 
+        //##################### START OF EXERCISE 112 ABOVE AND BELOW AVERAGE ################################
+        public static void AverageReport()
+        {
+            List<int> userInputs = new List<int>();
+            Console.Write("Please enter an integer(press enter key to finish): "); // Assuming user input is a valid integer
+            string numInString = Console.ReadLine();
+            while (!String.IsNullOrEmpty(numInString))
+            {
+                int num = Convert.ToInt32(numInString);
+                userInputs.Add(num);
+                Console.Write("Please enter an integer(press enter key to finish): ");
+                numInString = Console.ReadLine();
+            }
+
+            double average = (userInputs.Average()) * 1.0;
+            List<int> belowAverage = new List<int>();
+            List<int> equalToAverage = new List<int>();
+            List<int> aboveAverage = new List<int>();
+
+            for (int i = 0; i < userInputs.Count; i++)
+            {
+                if (userInputs[i] < average)
+                {
+                    belowAverage.Add(userInputs[i]);
+                }
+                else if (userInputs[i] > average)
+                {
+                    aboveAverage.Add(userInputs[i]);
+                }
+                else
+                {
+                    equalToAverage.Add(userInputs[i]);
+                }
+            }
+
+            if (belowAverage.Count > 0)
+            {
+                Console.Write("The numbers below average are: ");
+                foreach (int item in belowAverage)
+                {
+                    Console.Write($"{item} ");
+                }
+                Console.WriteLine();
+            }
+
+            if (equalToAverage.Count > 0)
+            {
+                Console.Write("The numbers equal to average are: ");
+                foreach (int item in equalToAverage)
+                {
+                    Console.Write($"{item} ");
+                }
+                Console.WriteLine();
+            }
+
+            if (aboveAverage.Count > 0)
+            {
+                Console.Write("The numbers above average are: ");
+                foreach (int item in aboveAverage)
+                {
+                    Console.Write($"{item} ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        //##################### END OF EXERCISE 112 ABOVE AND BELOW AVERAGE ###################################
+
+
         //##################### START OF EXERCISE 131 MORSE CODE ################################
         public static string MorseCode(string input)
         {
@@ -418,5 +487,26 @@ namespace PythonWorkbookInCSharp
         }
 
         //##################### END OF EXERCISE 131 MORSE CODE ##################################
+
+
+        //##################### START OF EXERCISE 165 GREATEST COMMON DIVISOR ################################
+        public static int GCD(int a, int b)
+        {
+            if (a == 0 && b == 0)
+            {
+                throw new ArgumentException();
+            }
+            if (b == 0)
+            {
+                return a;
+            }
+            else
+            {
+                int c = a % b;
+                return GCD(b, c);
+            }
+        }
+        //###################### END OF EXERCISE 165 GREATEST COMMON DIVISOR #################################
+
     }
 }
