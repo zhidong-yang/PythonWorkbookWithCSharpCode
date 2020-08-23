@@ -9,11 +9,52 @@ namespace PythonWorkbookProj2
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine(RandomPW());            
+        {            
 
             Console.ReadLine();
         }
+
+        //##################### START OF EXERCISE 73 MULTIPLE WORDS PALINDROME ################################
+        public static bool PalindromePhrase(string input)
+        {
+            bool output = true;
+
+            input = input.ToLower();
+            int start = 0;
+            int end = input.Length - 1;
+
+            while (start<end)
+            {
+                if (Char.IsLetter(input[start]) && Char.IsLetter(input[end]))
+                {
+                    if (input[start] != input[end])
+                    {
+                        output = false;
+                        break;
+                    }
+
+                    start++;
+                    end--;
+                }
+                else if (!Char.IsLetter(input[start]) && Char.IsLetter(input[end]))
+                {
+                    start++;
+                }
+                else if (Char.IsLetter(input[start]) && !Char.IsLetter(input[end]))
+                {
+                    end--;
+                }
+                else
+                {
+                    start++;
+                    end--;
+                }
+            }
+
+            return output;
+        }
+        //###################### END OF EXERCISE 73 MULTIPLE WORDS PALINDROME #################################
+
 
         //##################### START OF EXERCISE 94 RANDOM PASSWORD ################################
         public static string RandomPW()
