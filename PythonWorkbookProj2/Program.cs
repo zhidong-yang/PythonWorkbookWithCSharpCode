@@ -56,6 +56,48 @@ namespace PythonWorkbookProj2
         //###################### END OF EXERCISE 73 MULTIPLE WORDS PALINDROME #################################
 
 
+        //##################### START OF EXERCISE 79 MAX INTEGER ################################
+        public static int Partition(int[] inputArray, int start, int end)
+        {
+            int pivotValue = inputArray[end];
+
+            int i = start - 1;
+            for (int j = 0; j < inputArray.Length-1; j++)
+            {
+                if (inputArray[j]<pivotValue)
+                {
+                    i++;
+
+                    int temp1 = inputArray[i];
+                    inputArray[i] = inputArray[j];
+                    inputArray[j] = temp1;
+                }
+            }
+
+            i++;
+            int temp2 = inputArray[i];
+            inputArray[i] = inputArray[end];
+            inputArray[end] = temp2;
+
+            return i;
+        }
+        public static void QuickSort(int[] inputArray, int start, int end)
+        {
+            if (start < end)
+            {
+                int pivotIndex = Partition(inputArray, start, end);
+                QuickSort(inputArray, start, pivotIndex - 1);
+                QuickSort(inputArray, pivotIndex+1, end);
+            }
+        }
+        public static int MaxInteger(int[] inputArray)
+        {
+            QuickSort(inputArray, 0, inputArray.Length - 1);
+            return inputArray[inputArray.Length - 1];
+        }
+        //###################### END OF EXERCISE 79 MAX INTEGER #################################
+
+
         //##################### START OF EXERCISE 94 RANDOM PASSWORD ################################
         public static string RandomPW()
         {
