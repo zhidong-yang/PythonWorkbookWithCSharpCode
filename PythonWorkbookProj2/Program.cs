@@ -9,8 +9,8 @@ namespace PythonWorkbookProj2
     class Program
     {
         static void Main(string[] args)
-        {            
-
+        {
+                        
             Console.ReadLine();
         }
 
@@ -118,5 +118,60 @@ namespace PythonWorkbookProj2
             return output;
         }
         //###################### END OF EXERCISE 94 RANDOM PASSWORD #################################
+
+
+        //##################### START OF EXERCISE 135 ANAGRAMS ################################
+        public static bool IsAnagram(string input1, string input2)
+        {
+            bool output = false;
+            // Create a dictionary to see if they have the same letters and number of each letter
+            Dictionary<char, int> firstWordRef = new Dictionary<char, int>();
+            Dictionary<char, int> secondWordRef = new Dictionary<char, int>();
+            for (int i = 0; i < input1.Length; i++)
+            {
+                if (firstWordRef.ContainsKey(input1[i]))
+                {
+                    firstWordRef[input1[i]]++;
+                }
+                else
+                {
+                    firstWordRef[input1[i]] = 1;
+                }
+            }
+            for (int i = 0; i < input2.Length; i++)
+            {
+                if (secondWordRef.ContainsKey(input2[i]))
+                {
+                    secondWordRef[input2[i]]++;
+                }
+                else
+                {
+                    secondWordRef[input2[i]] = 1;
+                }
+            }
+            // if two dictionaries do not have the same number of key-value pairs, not anagram
+            if (firstWordRef.Count != secondWordRef.Count)
+            {
+                return output;
+            }
+            // if two dictionaries have the same number of key-value pairs, but key-value pairs do not match, not anagrams
+            foreach (var item in firstWordRef)
+            {
+                if (!secondWordRef.ContainsKey(item.Key) || secondWordRef[item.Key] != item.Value)
+                {
+                    return output;
+                }
+            }
+            // make sure they are not the same words
+            if (String.Compare(input2,input1) == 0)
+            {
+                return output;
+            }
+
+            // we can say they are anagrams after filtering above scenarios
+            output = true;
+            return output;
+        }
+        //###################### END OF EXERCISE 135 ANAGRAMS #################################
     }
 }
