@@ -9,8 +9,7 @@ namespace PythonWorkbookProj2
     class Program
     {
         static void Main(string[] args)
-        {
-                        
+        {                       
             Console.ReadLine();
         }
 
@@ -118,6 +117,97 @@ namespace PythonWorkbookProj2
             return output;
         }
         //###################### END OF EXERCISE 94 RANDOM PASSWORD #################################
+
+
+        //##################### START OF EXERCISE 102 REDUCED MEASURES ################################
+        public enum IngredientVolumn 
+        { 
+            Cup,
+            Tablespoon,
+            Teaspoon
+        };
+        public static string ReducedMeasures(int num, IngredientVolumn volumnUnit)
+        {
+            if (num <= 0)
+            {
+                throw new ArgumentException("The amount of ingredient volumn cannot be negative.");
+            }
+            
+            string output;
+            // Discuss each scenario based on input volumnUnit
+            if (volumnUnit == IngredientVolumn.Cup)
+            {
+                output = $"{num} cup(s)";              
+            }
+            else if (volumnUnit == IngredientVolumn.Tablespoon)
+            {
+                // 1 cup = 16 tablespoons
+                if (num >= 16)
+                {
+                    int cupNum = num / 16;
+                    int tablespoon = (num % 16);
+                    output = $"{cupNum} cup(s), {tablespoon} tablespoon(s)";
+                }
+                else
+                {
+                    output = $"{num} tablespoon(s)";
+                }
+            }
+            else
+            {
+                // t cup = 16 tablespoons = 48 teaspoons
+                if (num >= 48)
+                {
+                    int cupNum = num / 48;
+                    int tablespoon = (num % 48) / 3;
+                    if (tablespoon == 0)
+                    {
+                        int teaspoon = num % 48;
+                        if (teaspoon != 0)
+                        {
+                            output = $"{cupNum} cup(s), {teaspoon} teaspoon(s)"; 
+                        }
+                        else
+                        {
+                            output = $"{cupNum} cup(s)";
+                        }
+                    }
+                    else
+                    {
+                        int teaspoon = (num % 48) % 3;
+                        if (teaspoon != 0)
+                        {
+                            output = $"{cupNum} cup(s), {tablespoon} tablespoon(s), {teaspoon} teaspoon(s)";
+                        }
+                        else
+                        {
+                            output = $"{cupNum} cup(s), {tablespoon} tablespoon(s)";
+                        }
+                    }
+                }
+                else if(num >= 3)
+                {
+                    int tablespoon = num / 3;
+                    int teaspoon = num % 3;
+                    if (teaspoon != 0)
+                    {
+                        output = $"{tablespoon} tablespoon(s), {teaspoon} teaspoon(s)";
+                    }
+                    else
+                    {
+                        output = $"{tablespoon} tablespoon(s)";
+                    }
+                }
+                else
+                {
+                    output = $"{num} teaspoon(s)";
+                }
+            }
+
+            return output;
+        }
+
+        //###################### END OF EXERCISE 102 REDUCED MEASURES #################################
 
 
         //##################### START OF EXERCISE 135 ANAGRAMS ################################
