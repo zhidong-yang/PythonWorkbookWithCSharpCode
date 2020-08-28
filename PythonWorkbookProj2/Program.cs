@@ -10,8 +10,7 @@ namespace PythonWorkbookProj2
     {
         static void Main(string[] args)
         {
-            string word = "think";
-            Console.WriteLine(PigLatin(word));
+            
             Console.ReadLine();
         }
 
@@ -248,7 +247,11 @@ namespace PythonWorkbookProj2
                     {
                         secondPart.Append(input[firstVowelIndex]);
                         firstVowelIndex++;
-                    }                    
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
                 secondPart.Append("ay");
 
