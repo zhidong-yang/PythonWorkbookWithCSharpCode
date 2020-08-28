@@ -9,7 +9,9 @@ namespace PythonWorkbookProj2
     class Program
     {
         static void Main(string[] args)
-        {                       
+        {
+            string word = "think";
+            Console.WriteLine(PigLatin(word));
             Console.ReadLine();
         }
 
@@ -208,6 +210,62 @@ namespace PythonWorkbookProj2
         }
 
         //###################### END OF EXERCISE 102 REDUCED MEASURES #################################
+
+
+        //##################### START OF EXERCISE 115 PIG LATIN ################################
+        public static string PigLatin(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+            // designating the list of vowels
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+            
+            StringBuilder firstPart = new StringBuilder();
+            StringBuilder secondPart = new StringBuilder();
+            string output = "";
+
+            // if the starting letter of input is a vowel
+            if (vowels.Contains(input[0]))
+            {
+                foreach (var item in input)
+                {
+                    firstPart.Append(item);
+                }
+
+                firstPart.Append("way");
+                output = firstPart.ToString();
+            }
+
+            // if the starting letter of input is a consonant
+            else
+            {
+                int firstVowelIndex = 0;
+                while (firstVowelIndex < input.Length)
+                {
+                    if (!vowels.Contains(input[firstVowelIndex]))
+                    {
+                        secondPart.Append(input[firstVowelIndex]);
+                        firstVowelIndex++;
+                    }                    
+                }
+                secondPart.Append("ay");
+
+                for (int i = firstVowelIndex; i < input.Length; i++)
+                {
+                    firstPart.Append(input[i]);
+                }
+
+                firstPart.Append(secondPart);
+
+                output = firstPart.ToString();
+            }
+
+            return output;
+        }
+        //###################### END OF EXERCISE 115 PIG LATIN #################################
+
 
 
         //##################### START OF EXERCISE 135 ANAGRAMS ################################
