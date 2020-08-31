@@ -10,7 +10,8 @@ namespace PythonWorkbookProj2
     {
         static void Main(string[] args)
         {
-            
+            string word = "Hello World!";
+            Console.WriteLine(ImprovedPigLatin(word));
             Console.ReadLine();
         }
 
@@ -96,6 +97,25 @@ namespace PythonWorkbookProj2
             return inputArray[inputArray.Length - 1];
         }
         //###################### END OF EXERCISE 79 MAX INTEGER #################################
+
+        //###################### END OF EXERCISE 84 MEDIAN OF THREE VALUES #################################
+        public static int MedianOfThree(int num1, int num2, int num3)
+        {
+            if (num1 >= num2 && num1 <= num3)
+            {
+                return num1;
+            }
+            else if (num2 >= num1 && num2 <= num3)
+            {
+                return num2;
+            }
+            else
+            {
+                return num3;
+            }
+        } 
+
+        //###################### END OF EXERCISE 84 MEDIAN OF THREE VALUES #################################
 
 
         //##################### START OF EXERCISE 94 RANDOM PASSWORD ################################
@@ -214,6 +234,7 @@ namespace PythonWorkbookProj2
         //##################### START OF EXERCISE 115 PIG LATIN ################################
         public static string PigLatin(string input)
         {
+            // input can only be a single word, only lowercases in them
             if (String.IsNullOrEmpty(input))
             {
                 return "";
@@ -269,6 +290,39 @@ namespace PythonWorkbookProj2
         }
         //###################### END OF EXERCISE 115 PIG LATIN #################################
 
+
+        //##################### START OF EXERCISE 116 IMPROVED PIG LATIN ################################
+        public static string ImprovedPigLatin(string input)
+        {
+            // will use PigLatin() method from Exercise 115
+            StringBuilder resultString = new StringBuilder();
+            int traverseIndex = 0;
+            while (traverseIndex < input.Length)
+            {
+                // traverse through string by first adding the non-letter chars to resultString
+                while (!Char.IsLetter(input[traverseIndex]))
+                {
+                    resultString.Append(input[traverseIndex]);
+                    traverseIndex++;
+                }
+                // now traverseIndex is at the first letter after non-letter (block)                
+                StringBuilder singleWord = new StringBuilder();
+                while (Char.IsLetterOrDigit(input[traverseIndex]))
+                {
+                    singleWord.Append(input[traverseIndex]);
+                    traverseIndex++;
+                }
+                // now traverseIndex is at the first char AFTER a whole word
+                string word = singleWord.ToString();
+                string singlePigLatin = PigLatin(word);
+                resultString.Append(singlePigLatin);
+            }
+            string output = resultString.ToString();
+
+            return output;
+
+        }
+        //###################### END OF EXERCISE 116 IMPROVED PIG LATIN #################################
 
 
         //##################### START OF EXERCISE 135 ANAGRAMS ################################
