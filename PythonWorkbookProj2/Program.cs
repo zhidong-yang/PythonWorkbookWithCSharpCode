@@ -10,8 +10,7 @@ namespace PythonWorkbookProj2
     {
         static void Main(string[] args)
         {
-            string word = "Hello World!";
-            Console.WriteLine(ImprovedPigLatin(word));
+            
             Console.ReadLine();
         }
 
