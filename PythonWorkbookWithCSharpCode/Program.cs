@@ -11,7 +11,7 @@ namespace PythonWorkbookInCSharp
     {
         static void Main(string[] args)
         {
-            
+            QuestionsPageThree.TwelveDaysXMas(12);
             Console.ReadLine();
         }
 
